@@ -1,4 +1,5 @@
 import requests
+import random
 
 API_KEY = 'D66se69oJo4Oyj1_ljAnQ8aeU_5QwmyVmGZdfaiEyYKWObGZ8_yS88UUp3YVZdSmRAYwn7eZLblU2icLS2D5MGSz4bIMC5gLlQePQQxRFvqeBmtYwKKzs5S6gsYyZnYx'
 url = "https://api.yelp.com/v3/businesses/search"
@@ -21,7 +22,12 @@ def get_api(theme, location):
         businesses = data.get('businesses', [])
         
         if businesses:
-            random_business = businesses[0] # Pick the first business as a random option
+            num = len(businesses)
+            random_num = range(0, num)
+            random_num = random.choice(random_num)
+            
+            random_business = businesses[random_num]
+           
             name = random_business.get('name')
             rate = random_business.get('rating')
             img = random_business.get('image_url')
