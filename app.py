@@ -11,7 +11,7 @@ def index():
     name, img, rating = None, None, None
     if request.method == 'POST':
         theme = request.form['theme']
-        location = request.form['location']
+        location = request.form['locationName']
         limit = request.form['limit']
         name, img, rating  = get_api(theme, location, limit)
         print(name)

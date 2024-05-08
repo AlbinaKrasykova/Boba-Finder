@@ -18,17 +18,25 @@
     </style>
 </head>
 <body > 
-    <div class="text-center">
-        <h1 class="mt-5">  Find your perfect spot </h1>
-        
-        <button id="findBobaButton"> Let's go !</button> 
-    </div> 
+
+    <body class=>
+        <div class="text-center">
+        <h1 class="mt-5"> Perfect Food Spot App</h1>
+        <form action="/" method = "post"> 
+            <input type="text" id="theme" name="theme" placeholder="What style ?">
+            <input type="text" id="locationName" name="locationName" placeholder="What city ?">
+            <input type="text" id="limit" name="limit" placeholder=" How many ? ">
+            <button>Find</button>
+        </form>
     
     <div id="results" class="mt-5">
         {% if name %}
-            {{ name }}: {{ rating }} <br>
+            {{ name }} 
+            <br>
+            {{ rate }} 
+            <br>
             {% if img %}
-                <img src="{{ img }}" alt="Boba Icon">
+                <img src="{{ img }}" alt="perfect food spot Icon">
             {% endif %}
         {% endif %}
     </div>
