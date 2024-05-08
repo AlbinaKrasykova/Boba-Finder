@@ -8,12 +8,12 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    name, img, rating = None, None, None
+    name, img , rating = None, None, None
     if request.method == 'POST':
         theme = request.form['theme']
         location = request.form['locationName']
-        limit = request.form['limit']
-        name, img, rating  = get_api(theme, location, limit)
+        
+        name, img, rating  = get_api(theme, location)
         print(name)
         print(img)
         print(rating)
