@@ -8,5 +8,5 @@ Well this app is for you ! It randomly chooses a food spot for you to try, all y
 </br>
 2. What location would wish? NYC, SF, LA ?
 </br>
-3. How many options would you like to choose from ? Choose a number
+3. How many options would you like to choose from ? Choose a number of options you would like to see
 </br>
