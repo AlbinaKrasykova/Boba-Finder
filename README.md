@@ -1,4 +1,4 @@
-# Find your perfect Food spot (Flask & Yelp web app)
+# Find your perfect Food spot (Flask & Yelp API web app)
 
 Have you ever struggled with finding a perfect food spot for a Bday party, a date, or a lunch with family & friends ?
 Well this app is for you ! It randomly chooses a food spot for you to try, all you have to do - just to define your preferences.
