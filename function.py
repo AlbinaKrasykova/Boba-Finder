@@ -1,7 +1,7 @@
 import requests
 import random
 
-API_KEY = 'D66se69oJo4Oyj1_ljAnQ8aeU_5QwmyVmGZdfaiEyYKWObGZ8_yS88UUp3YVZdSmRAYwn7eZLblU2icLS2D5MGSz4bIMC5gLlQePQQxRFvqeBmtYwKKzs5S6gsYyZnYx'
+API_KEY = '****************x'
 url = "https://api.yelp.com/v3/businesses/search"
 headers = {
     "Authorization": f"Bearer {API_KEY}",
