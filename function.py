@@ -1,45 +1,64 @@
 import requests
 import random
 
-API_KEY = '****************x'
+
+'''
+Let's find a perfect food match !
+
+
+
+'''
+
+api_key = '_WRbNCTbDokxy_wfb5q_8dlFN0ZOMyaB4PTZUxiQZVqHRi29zPpVyyduIGbem_m7XIy9oXw408Cu0LcKTncaTnMOeZ2k2-jcFANJAfjZbZ6bAoWXgZ-hTVTcI2lrZnYx'
 url = "https://api.yelp.com/v3/businesses/search"
 headers = {
-    "Authorization": f"Bearer {API_KEY}",
+    "Authorization": f"Bearer {api_key}",
     "accept": "application/json"
 }
 
-def get_api(theme, location):
-    params = {
-        "term": theme,      # Specify your search term here
-        "location": location,  # Specify the location
-        
+# API constants, you shouldn't have to change these.
+API_HOST = 'https://api.yelp.com'
+SEARCH_PATH = '/v3/businesses/search'
+BUSINESS_PATH = '/v3/businesses/'  # Business ID will come after slash.
+
+
+# Defaults for our simple example.
+term= 'dinner'
+location= 'San Francisco'
+SEARCH_LIMIT = 3
+
+def get_api(api_key, term, location):
+    """Query the Search API by a search term and location.
+
+    Args:
+        term (str): The search term passed to the API.
+        location (str): The search location passed to the API.
+
+    Returns:
+        dict: The JSON response from the request.
+    """
+
+    url_params = {
+        'term': term.replace(' ', '+'),
+        'location': location.replace(' ', '+'),
+        'limit': SEARCH_LIMIT
+
     }
 
-    response = requests.get(url, headers=headers, params=params)
+    response = requests.get(url, headers=headers, params=url_params)
+    data = response.json() 
+   
+   # Extracting names and image URLs from the JSON response
+    businesses = data.get('businesses', [])
+    names = [business.get('name') for business in businesses]
+    image_urls = [business.get('image_url') for business in businesses]
 
-    if response.status_code == 200:
-        data = response.json()
-        businesses = data.get('businesses', [])
-        
-        if businesses:
-            num = len(businesses)
-            random_num = range(0, num)
-            random_num = random.choice(random_num)
-            
-            random_business = businesses[random_num]
-           
-            name = random_business.get('name')
-            rate = random_business.get('rating')
-            img = random_business.get('image_url')
+    return names, image_urls
 
-            print("Name:", name)
-            print("Rating:", rate)
-            print("Image URL:", img)
-            print()
-        else:
-            print("No businesses found.")
-    else:
-        print("Failed to retrieve data:", response.status_code)
-    return name, img, rate
 
-get_api('Boba', 'NYC')
+businesses = get_api(api_key, term, 'NYC')
+print(businesses)
+
+
+
+
